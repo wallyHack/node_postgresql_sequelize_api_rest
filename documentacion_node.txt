@@ -1,0 +1,73 @@
+
+- crea el archivo package.json con la configuración del proyecto y su estructura
+npm init --yes
+
+- instalamos el framework express
+npm i express
+
+- instalamos los modulos para interactuar con postgresql y el ORM sequelize
+npm i pg pg-hstore sequelize
+
+ORM: Es un programa que me permite interactuar con la base de datos através de funciones,
+por lo que ya no es necesario escribir las consultas directamente.
+Esto me facilita cambiar entre una base de datos a otra, por ejemplo de ORACLE A MYSQL;
+django usa un ORM.
+
+- documentación de ORM sequelize
+https://sequelize.org/master/manual/getting-started.html
+
+- módulo para ver por consola las peticiones que van llegando del servidor
+npm i morgan
+
+- módulo para escribir código moderno de javascript
+npm i @babel/polyfill
+
+- instalamos un módulo llamado "nodemon" para que reinicie el servidor cuando quiera
+npm i nodemon -D
+
+- en scripts -> package.json creamos el comando dev para correr el proyecto
+"dev": "nodemon src/index.js"
+
+- corremos el proyecto
+npm run dev
+
+- instalamos el módulo "@babel/node" que se complementa con nodemon(Esto es solo para desarrollo, en producción ya no)
+- corre codifo moderno javascript
+npm i @babel/node
+
+en scripts -> package.json creamos el comando dev para correr el proyecto con babel
+"dev": "nodemon src/app.js --execute babel-node"
+
+- instalamos los módulos complementarios o de desarrollo
+babeljs -> compila código viejo a código nuevo(Estándar) de javascript
+documentación: https://babeljs.io/docs/en/usage
+
+npm install --save-dev @babel/core @babel/cli @babel/preset-env
+
+- creamos el archivo de configuración de babel
+.babelrc
+
+- en scripts -> package.json creamos el comando build para traducir el código con babel
+"build": "babel src --out-dir dist"
+
+- ejecutamos el comando 
+npm run build
+
+- en scripts -> package.json creamos el comando start para ejecutar el código final
+"start": "node dist/index.js
+
+- ejecutamos el código final(Cuando ya esta en producción)
+npm start
+
+- creamos la estructura del proyecto
+mkdir sql -> scripts de sql
+mkdir src
+    - index.js -> arranca la aplicación
+    - app.js   -> crea el código del servidor(Configuración del servidor)
+    - mkdir routes -> rutas del servidor
+    - mkdir models -> mmodelos de la base de datos
+    - mkdir controllers -> funciones que llaman las rutas
+    - mkdir database -> conexión a la base de datos y/o funciones reutilizables
+
+- hacemos la configuración del servidor en el archivo app.js
+- hacemos la configuración para arrancar la aplicación en el archivo index.js
