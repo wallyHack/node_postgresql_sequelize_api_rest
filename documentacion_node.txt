@@ -71,3 +71,13 @@ mkdir src
 
 - hacemos la configuración del servidor en el archivo app.js
 - hacemos la configuración para arrancar la aplicación en el archivo index.js
+
+- hacemos la conexion entre el ORM y la base de datos de postgresql en el archivo database.js
+- ya definimos los modelos usando el ORM Sequelize y sus relaciones necesarias
+
+- comenzamos a realizar la API rest definiendo sus rutas
+
+- creamos los controllers para Proyectos, que se encargan de la lógica para crear(POST),
+eliminar(DELETE), actualizar(PUT) y obtener todos los proyectos(GET).
+
+- y ya solo invocamos las funciones en las routes
