@@ -2,10 +2,10 @@
 // arranca la aplicación
 
 import app from './app';
+import '@babel/polyfill';
 
 // settings
-app.set('port', process.env.PORT || 2001
-);
+app.set('port', process.env.PORT || 3000);
 app.set("json spaces", 2);
 
 // starting the server

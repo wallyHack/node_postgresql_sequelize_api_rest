@@ -136,3 +136,27 @@ export async function updateTask(req, res){
     }
 }
 
+// función que extrae todas las tareas pertenecientes a un projecto
+export async function getTasksByProject(req, res){
+    const { projectid } = req.params; // id de la URL
+    try {
+        const tasks = await Task.findAll({
+            attributes: ['id', 'name', 'done', 'projectid'],
+            where: {
+                projectid
+            }
+        });
+    
+        // respuelta al cliente
+        res.json({
+            data: tasks
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Something goes wrong",
+            data: {}
+        });
+    }
+}
+
