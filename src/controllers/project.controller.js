@@ -95,28 +95,36 @@ export async function updateProject(req, res){
     const { id } = req.params;
     const { name, priority, description, deliverydate } = req.body;
 
-    const projects = await Project.findAll({
-        attributes: ['id', 'name', 'priority', 'description', 'deliverydate' ],
-        where: {
-            id: id
-        }
-    });
-
-    // si el proyecto existe lo actualizamos
-    if(projects.length > 0){
-        projects.forEach(async project => {
-            await project.update({
-                name,
-                priority,
-                description,
-                deliverydate
+    try {
+        const projects = await Project.findAll({
+            attributes: ['id', 'name', 'priority', 'description', 'deliverydate' ],
+            where: {
+                id: id
+            }
+        });
+    
+        // si el proyecto existe lo actualizamos
+        if(projects.length > 0){
+            projects.forEach(async project => {
+                await project.update({
+                    name,
+                    priority,
+                    description,
+                    deliverydate
+                });
             });
+        }
+        // respuesta al cliente
+        res.json({
+            message: "Project updated succesfully",
+            data: projects
         })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Something goes wrong",
+            data: {}
+        });
     }
-    // respuesta al usuario
-    res.json({
-        message: "Project updated succesfully",
-        data: projects
-    })
 }
 

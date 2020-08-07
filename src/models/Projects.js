@@ -1,12 +1,12 @@
 
 import Sequelize from 'sequelize';
-import { sequelize } from './../database/database';
+import { sequelize } from '../database/database';
 
 // modelo Task
 import Task from './Tasks';
 
 // definimos el modelo proyect con el ORM
-const Proyect = sequelize.define('proyects',{
+const Project = sequelize.define('projects',{
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true
@@ -28,9 +28,9 @@ const Proyect = sequelize.define('proyects',{
 });
 
 // relación de 1 a muchos, un proyecto tiene de 1 a muchas tareas
-Proyect.hasMany(Task, {foreignKey: 'proyectId', sourceKey: 'id'});
+Project.hasMany(Task, {foreignKey: 'projectid', sourceKey: 'id'});
 
 // relación a 1, muchas tareas pertenecen a un solo proyecto
-Task.belongsTo(Proyect, {foreignKey: 'proyectId', sourceKey: 'id'})
+Task.belongsTo(Project, {foreignKey: 'projectid', sourceKey: 'id'})
 
-export default Proyect;
+export default Project;

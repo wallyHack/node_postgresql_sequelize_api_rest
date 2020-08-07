@@ -1,0 +1,3 @@
+
+- SequelizeDatabaseError: column "createdAt" does not exist
+Solución: escribir el atributo timestamps(Que trabaja con fechas) correctamente

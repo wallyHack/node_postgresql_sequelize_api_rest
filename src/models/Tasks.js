@@ -14,11 +14,11 @@ const Task = sequelize.define('tasks',{
     done: {
         type: Sequelize.BOOLEAN
     },
-    proyectId:{
+    projectid:{
         type: Sequelize.INTEGER,        
     }
 }, {
-    timestamp: false
+    timestamps: false
 });
 
 export default Task;
